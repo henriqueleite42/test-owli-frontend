@@ -1,68 +1,78 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Teste Para Empresa Owli - Chat App
 
-## Available Scripts
+Aplicativo De Chat Feito Como Demonstrativo De Habilidades Para a Vaga De Desenvolvedor FullStack Para a Empresa Owli
 
-In the project directory, you can run:
+## Sobre o Teste:
 
-### `npm start`
+### O Que Foi Pedido:
+* NodeJs No BackEnd
+* Uso De Websockets
+* CRUD De Usuário
+* Troca De Mensagens Entre Usuários
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### O Que Foi Entregue:
+* NodeJs No BackEnd
+* ReactJs, Redux e Sass No FrontEnd
+* Uso De Socket.io Para Envio De Mensagens
+* Uso De JWT Para Autenticação
+* CRU De Usuário
+* Troca De Mensagens Entre Usuários
+* Notificação De Nova Mensagem
+* Autenticação De Usuários
+* Validacão De Dados
+* Responsividade Mobile Mediana
+* Login e Logout
+* Próximos Logins Automáticos Enquanto o Token Continuar Valido.
+* Popups De Alerta De Erro Ou Sucesso Para Registro ou Update de Informações Dos Usuários
+* Tela De Loading
+* Horario De Envio Nas Mensagens
+* Uso De Versionamento De Código (Git)
+* Versão Live Demo Do Projeto Hospedado No Heroku
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+### O Que Eu Gostaria De Adicionar Mas Não Deu Tempo:
+* Envio De Imagem Como Foto De Perfil Do Usuário
+* Sistema De Prêmios Para Incentivar Os Usuários a Conversarem Entre Si, Como Uma Coroa Ao Lado Do Nome Do Usuário Que Tem a Maior Media De Conversas (Mensagens Enviadas E Recebidas, Para Evitar Flood De Mensagens Apenas Para Ganhar Pontos)
+* Relatorios De Um Usuário Especifico e De Todos Os Usuários, Com Gráficos. Exibindo Informações Como Quantidade De Mensagens Enviadas e Recebidas, Quantidade De Usuários Com Quem Conversa, Horario De Maior Atividade, Etc.
+* Uso De ReactMemo Na Listagem De Usuários e Mensagens Enviadas.
+* Notificação De "Digitando..."
 
-### `npm test`
+## Regras De Negocio:
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Cadastro De Usuário:
+* **Username:** Apenas Letras Minusculas e Maiúsculas, Numeros e Underlines. Nenhum Outro Usuário Devera Possuir o Mesmo Username. Precisa Ter Entre 3 e 20 Carácteres.
+* **Email:** Precisa Ser Um E-mail Valido, Com Carácteres Antes e Depois Do @. Nenhum Outro Usuário Devera Possuir o Mesmo E-mail. Precisa Ter No Maximo 35 Carácteres
+* **Phone:** Apenas Numeros. Precisa Ter Exatamente 11 Carácteres.
+* **Address:** Não é Obrigatório, Precisa Ter No Maximo 40 Carácteres.
+* **Password:** Precisa Ter Uma Letra Maiúscula, Uma Minuscula, Um Carácter Especial e Um Numero. Precisa Ter Mais De 6 Carácteres
 
-### `npm run build`
+### Login:
+* O Usuário Precisa Existir.
+* Caso Ele Já Tenha Feito Login Antes, o Token Será Validado (Expira 24h Após o Primeiro Login), e Caso Seja Aceito o Usuário Sera Logado Imediatamente, Sem Precisar Preencher Nenhuma Informação.
+* Caso Seja Feito Um Login De Outro Dispositivo Ou Aba, o Primeiro Usuário Logado Sera Desconectado.
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Listagem De Usuários
+* Apenas Usuários Ativos (Que Estejam Logados), Aparecerão Na Listagem.
+* Quando Um Usuário Deslogar, e Outro Usuário Estiver Conversando Com Ele, Esse Outro Usuário Será Redirecionado Para a Pagina Inicial.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Envio De Mensagens:
+* Ao Enviar Uma Mensagem, Ela Será Imediatamente Enviada Ao Outro Usuário.
+* Quando o Usuário De Destino Receber a Mensagem, Ele Será Notificado Por Uma Esfera Branca, Do Lado Direito Do Nome Do Usuário Que Enviou a Mensagem Para Ele.
+* Quando o Destinatário Clicar Na Aba Para Conversar Com o Usuário Que Enviou a Mensagem, a Notificação Devera Desaparecer.
+* Caso o Destinatário Já Esteja Conversando Com Quem Enviou a Mensagem, Ele Não Recebera Notificações Por Novas Mensagens Enviadas.
+* Caso o Usuário Esteja Lendo Mensagens Antigas, a Tela Continuara Focada Onde Ele Esta, Caso Contrario a Tela Será "Rolada Para Baixo", Para Que o Usuário Consiga Ler Facilmente Novas Mensagens.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Editar Usuário
+* O Username Não Pode Ser Alterado.
+* Apenas As Informações Que Sejam Diferentes Das Cadastradas Serão Enviadas Ao Servidor. Caso Nenhuma Delas Seja Diferente, Apenas Uma Mensagem De Sucesso Será Exibida.
+* As Regras De Validação Para Registro Também São Validas Para Atualização De Informações.
 
-### `npm run eject`
+## Explicação De Porque Certas Decisões Foram Tomadas:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Por Que Os Usuários Ativos São Salvos Em Variáveis?
+* Apesar De Não Ser o Correto a Ser Feito, Foi Necessário, Pois Como a Conexão Entre o Usuário e o Servidor, e entre o Servidor e Banco De Dados Tendem a Ter Um Desempenho Bem Abaixo Do Esperado, Preferi Guardar Essas Informações Dentro De Variáveis, Para Que a Aplicação Seja Testada Com Mais Facilidade Obviamente, Isso Foi Feito Apenas Porque Esse É Um Projeto De Exemplo e De Demonstração De Habilidade, Uma Coisa Assim Jamais Seria Feita Em Produção.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Porque Não Foi Entregue a Opção De Deletar Um Usuário?
+* Presumi Que a Criação, Edição e Listagem Já Bastavam Para Demonstrar Meu Conhecimento, Por Isso Decidi Dedicar o Tempo Que Gastaria Com Isso Em Outras Coisas Que Tenho Mais Dificuldade e Me Tomariam Mais Tempo.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Porque Não Foi Feita a Renovação Do Token Quando o Usuário Realiza o Login Novamente?
+* Apesar De Facilitar Para o Usuário, Acho Que Seria Uma Falha Na Segurança e Preferi Deixar Que o Token Expire Após 24h. Apesar Disso, Essa Funcionalidade Poderia Ser Facilmente Implementada.

@@ -1,0 +1,98 @@
+@import '../config/config.scss';
+
+#root {
+  display: flex;
+}
+
+#nav-bar {
+  width: $leftWeb;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: $g1;
+
+  #nav-user {
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    svg, span {
+      color: $g5;
+      cursor: pointer;
+    }
+
+    svg {
+      font-size: 70px;
+      margin-bottom: 20px;
+    }
+
+    span {
+      text-transform: uppercase;
+      font-weight: bold;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  #online-users {
+    min-height: 75vh;
+    max-height: 75vh;
+    overflow-y: scroll;
+  }
+}
+
+#page-content {
+  width: $rightWeb;
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  background-color: $background;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #default-screen {
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: $g2;
+
+    svg {
+      font-size: 250px;
+      margin-bottom: 25px;
+    }
+
+    span {
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+}
+
+@media screen and (max-width: 900px) {
+  #nav-bar {
+    width: 100vw;
+
+    &.hide {
+      display: none;
+    }
+  }
+
+  #page-content {
+    width: 100vw;
+
+    &.hide {
+      display: none;
+    }
+  }
+}

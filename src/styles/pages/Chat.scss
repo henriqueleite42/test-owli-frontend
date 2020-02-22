@@ -1,0 +1,125 @@
+@import '../config/config.scss';
+
+@mixin barConfig() {
+  width: 100%;
+  height: 66px;
+  min-height: 66px;
+  max-height: 66px;
+  display: flex;
+  align-items: center;
+  background-color: $g1;
+  justify-content: space-between;
+  padding-left: 20px;
+  border-left: 1px solid $g3;
+  position: sticky;
+}
+
+#message-page {
+  width: $rightWeb;
+  max-height: 100vh;
+  overflow-y: hidden;
+
+  #back-bar {
+    @include barConfig();
+    color: $g5;
+    top: 0;
+
+    svg {
+      font-size: 25px;
+      cursor: pointer;
+    }
+
+    span {
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  }
+
+  #messages {
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+
+  #send-bar {
+    @include barConfig();
+    padding-right: 20px;
+    bottom: 0;
+
+    svg, input {
+      color: $g5;
+    }
+
+    #send-input {
+      margin-right: 20px;
+      border-radius: 25px;
+      max-width: 100%;
+      height: 40px;
+      padding-right: 20px;
+      background-color: $g3;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+
+      input {
+        width: 100%;
+        height: 100%;
+        padding: 5px 20px;
+        background-color: transparent;
+        border: none;
+
+        &:focus {
+          &::placeholder {
+            color: transparent;
+          }
+        }
+      }
+    }
+
+    #send-btn {
+      width: 45px;
+      height: 45px;
+      margin: 5px;
+      background-color: $g2;
+      border-radius: 50%;
+      padding: 13px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $g8;
+      }
+    }
+  }
+
+  @media screen and (min-width: 900px) {
+    #messages {
+      height: calc(100vh - 132px);
+      min-height: calc(100vh - 132px);
+      max-height: calc(100vh - 132px);
+    }
+
+    #send-input {
+      width: 100%;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    width: 100vw;
+
+    #messages {
+      height: calc(100vh - 132px);
+      min-height: calc(100vh - 132px);
+      max-height: calc(100vh - 132px);
+    }
+
+    #send-bar {
+      padding: 0 10px;
+
+      #send-input {
+        padding: 0;
+        margin: 0;
+        width: calc(100% - 10px);
+      }
+    }
+  }
+}

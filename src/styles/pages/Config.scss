@@ -1,0 +1,150 @@
+@import '../config/config.scss';
+
+#config-page {
+  width: $rightWeb;
+  height: 100vh;
+  background-color: $background;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #config-form {
+    background-color: transparent;
+    width: 90vw;
+    min-height: 500px;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 7px;
+    border: 4px solid $g5;
+    box-shadow: inset 0px 0px 15px -7px rgba(0,0,0,0.67);
+
+    #header, #content, #buttons {
+      width: 90vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #header {
+      height: 30%;
+
+      svg {
+        font-size: 100px;
+        color: $g5;
+      }
+    }
+
+    #content {
+      height: 50%;
+      flex-direction: column;
+
+      .input {
+        border-bottom: 2px solid $g3;
+        width: 60%;
+        margin-bottom: 3vh;
+        overflow-y: hidden;
+        min-height: 40px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+
+        &.active {
+          border-bottom: 2px solid $g5;
+        }
+
+        input {
+          background-color: transparent;
+          border: none;
+          color: $g5;
+          padding: 10px;
+          width: 100%;
+
+          &::placeholder {
+            color: $g3;
+          }
+
+          &:disabled {
+            background-color: transparentize($color: $g1, $amount: 0.8);
+            cursor: not-allowed;
+          }
+
+          &:focus {
+            &::placeholder {
+              color: transparent;
+            }
+          }
+        }
+      }
+    }
+
+    #buttons {
+      height: 20%;
+      justify-content: space-around;
+
+      button {
+        background-color: transparent;
+        padding: 10px;
+        border-radius: 7px;
+        font-weight: bold;
+        cursor: pointer;
+
+        &:first-child {
+          border: 2px solid rgb(226, 78, 78);
+          color: rgb(226, 78, 78);
+
+          &:hover {
+            background: rgb(226, 78, 78);
+            color: $g3;
+          }
+        }
+
+        &:last-child {
+          border: 2px solid $g5;
+          color: $g5;
+
+          &:hover {
+            background: rgb(144,144,144);
+          }
+        }
+      }
+    }
+
+    @media screen and (min-width: 900px) {
+      width: 30vw;
+
+      #header, #content, #buttons {
+        width: 30vw;
+      }
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    width: 100vw;
+    height: auto;
+  }
+}
+
+#btn-back {
+  position: absolute;
+  top: 20px;
+  left: calc(#{$leftWeb} + 25px);
+  font-size: 25px;
+  cursor: pointer;
+  color: $g5;
+
+  @media screen and (max-width: 900px) {
+    top: 5vh;
+    left: 5vw;
+    background-color: $g4;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

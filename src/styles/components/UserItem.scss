@@ -1,0 +1,45 @@
+@import '../config/config.scss';
+
+.user-item {
+  display: flex;
+  height: 50px;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
+  border-top: 1px solid $g3;
+  color: $g5;
+  cursor: pointer;
+
+  &.active {
+    background-color: $g3;
+    color: $g5;
+  }
+
+  &:last-child {
+    border-bottom: 1px solid $g3;
+  }
+
+  &:hover {
+    .user-name {
+      text-decoration: underline;
+    }
+  }
+
+  .user-icon {
+    width: 15%;
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .user-name {
+    width: 78%;
+    padding-left: 10px;
+  }
+
+  .new-msg {
+    background-color: $g5;
+    border-radius: 50%;
+    width: 13px;
+    height: 13px;
+  }
+}

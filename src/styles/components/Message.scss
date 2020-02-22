@@ -1,0 +1,52 @@
+@import '../config/config.scss';
+
+.message-div {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 15px;
+
+  &.sent {
+    justify-content: flex-end;
+
+    .message-msg {
+      background-color: $g5;
+      border-bottom-right-radius: 0;
+
+      .message-time {
+        text-align: end;
+      }
+    }
+  }
+
+  &:not(.sent) {
+    .message-msg {
+      background-color: $g4;
+      color: $g5;
+      border-bottom-left-radius: 0;
+    }
+
+    .message-time {
+      text-align: start;
+    }
+  }
+
+  .message-msg {
+    max-width: 65%;
+    padding: 15px;
+    border-radius: 7px;
+    box-shadow: 5px 5px 25px -5px rgba(0,0,0,0.3);
+
+    p {
+      user-select: text;
+      margin-bottom: 5px;
+    }
+
+    .message-time {
+      span {
+        font-size: 8px;
+      }
+    }
+  }
+}
