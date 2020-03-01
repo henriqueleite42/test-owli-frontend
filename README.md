@@ -29,6 +29,11 @@ Aplicativo De Chat Feito Como Demonstrativo De Habilidades Para a Vaga De Desenv
 * Uso De Versionamento De Código (Git)
 * Versão Live Demo Do Projeto Hospedado No Heroku
 
+### Obs:
+Achei que o BackEnd estava um pouco simples para demonstrar meu conhecimento, então tirei um tempo nesse sabado (2020/02/29) para aprender TypeScript e refazer todo o Back.
+Infelizmente não tive tempo de estudar como fazer deploy de uma aplicação TypeScript no Heroku, mas o funcionamento de ambas as versões é o mesmo.
+[Branch TypeScript](https://github.com/henriqueleite42/test-owli-backend/tree/typescript)
+
 ### O Que Eu Gostaria De Adicionar Mas Não Deu Tempo:
 * Envio De Imagem Como Foto De Perfil Do Usuário
 * Sistema De Prêmios Para Incentivar Os Usuários a Conversarem Entre Si, Como Uma Coroa Ao Lado Do Nome Do Usuário Que Tem a Maior Media De Conversas (Mensagens Enviadas E Recebidas, Para Evitar Flood De Mensagens Apenas Para Ganhar Pontos)
